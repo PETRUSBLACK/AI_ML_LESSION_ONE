@@ -1,0 +1,367 @@
+PYTHON FOR MACHINE LEARNING (FOUNDATION LEVEL)
+
+Machine Learning is powered by Python programming. Before ML gets serious, 
+you must be very strong in Python basics used in ML.
+
+# Numbers and variables
+x = 10
+y = 5
+total = x + y
+print("Total:", total)
+
+# List
+scores = [50, 60, 70, 80, 90]
+print("Scores:", scores)
+
+# Loop
+for score in scores:
+    print("Score:", score)
+
+# Function
+def calculate_average(data):
+    return sum(data) / len(data)
+
+average = calculate_average(scores)
+print("Average score:", average)
+
+# Dictionary
+student = {
+    "name": "John",
+    "age": 16,
+    "score": 85
+}
+
+print("Student name:", student["name"])
+
+# Conditional statement
+if average >= 70:
+    print("Pass")
+else:
+    print("Fail")
+
+
+WHAT IS PYTHON IN MACHINE LEARNING?
+🔹 Definition:
+Python is the most popular programming language used in Machine Learning because:
+
+It is easy to read
+It has many ML libraries
+It is fast to develop with
+It is used by Google, Facebook, Netflix, OpenAI, Tesla
+
+✅ Without Python, Machine Learning is very difficult for beginners.
+
+🔹 Definition:
+
+A variable is a container that stores a value.
+
+x = 10
+y = 5
+total = x + y
+
+✔ x stores 10
+✔ y stores 5
+✔ total stores the result of adding them
+
+Output:
+Total: 15
+
+👉 In ML, variables store:
+Data
+Weights
+Predictions
+
+PYTHON LIST (USED FOR DATA STORAGE)
+🔹 Definition:
+
+A list is a collection of multiple values stored in one variable.
+
+Example
+scores = [50, 60, 70, 80, 90]
+
+
+✔ Stores many student scores
+✔ Order matters
+✔ Values can be accessed by index
+
+Example
+print(scores[0])
+
+Output
+50
+
+✅ In ML, lists are used before converting to NumPy arrays.
+
+4. LOOPS (PROCESSING DATA ONE BY ONE)
+🔹 Definition:
+
+A loop allows a program to repeat an action.
+
+Example
+for score in scores:
+    print("Score:", score)
+
+✔ Takes each score in the list
+✔ Prints them one by one
+
+Output:
+Score: 50
+Score: 60
+Score: 70
+Score: 80
+Score: 90
+
+
+✅ ML uses loops to:
+Clean data
+Preprocess data
+Train models
+
+5. FUNCTIONS (REUSABLE LOGIC)
+🔹 Definition:
+
+A function is a block of code that performs a specific task and can be reused.
+
+Example
+def calculate_average(data):
+    return sum(data) / len(data)
+
+✔ data receives the list
+✔ sum(data) adds all values
+✔ len(data) counts the values
+✔ Division gives the average
+
+✅Calling the function:
+average = calculate_average(scores)
+
+✅Output:
+Average score: 70.0
+
+✅ ML uses functions for:
+Training
+Prediction
+Data cleaning
+Accuracy calculation
+
+✅ 6. DICTIONARY (KEY–VALUE DATA)
+🔹 Definition:
+A dictionary stores data in key : value pairs.
+
+Example
+student = {
+    "name": "John",
+    "age": 16,
+    "score": 85
+}
+
+✅Accessing a value:
+print(student["name"])
+
+Output:
+Student name: John
+
+✅ ML uses dictionaries for:
+Model parameters
+Configurations
+Labeled data
+
+7. CONDITIONAL STATEMENTS (DECISION MAKING)
+🔹 Definition:
+Conditional statements allow a program to make decisions.
+
+Example:
+if average >= 70:
+    print("Pass")
+else:
+    print("Fail")
+
+✔ If condition is true → Pass
+✔ Else → Fail
+
+✅Output:
+Pass
+
+✅ ML uses conditions to:
+Classify results
+Filter data
+Control training logic
+
+WEEK 3: NUMPY FOR MACHINE LEARNING (DEEP & PRACTICAL)
+NumPy is the mathematical heart of Machine Learning. 
+Almost all ML libraries (Scikit-Learn, TensorFlow, 
+PyTorch) rely on NumPy concepts.
+
+
+import numpy as np
+
+# 1. Creating arrays
+arr1 = np.array([10, 20, 30, 40, 50])
+arr2 = np.array([[1, 2, 3],
+                 [4, 5, 6]])
+
+print("1D Array:", arr1)
+print("2D Array:\n", arr2)
+
+# 2. Shape and size
+print("Shape of arr2:", arr2.shape)
+print("Size of arr2:", arr2.size)
+
+# 3. Array operations
+print("Addition:", arr1 + 5)
+print("Multiplication:", arr1 * 2)
+
+# 4. Mathematical functions
+print("Mean:", np.mean(arr1))
+print("Max:", np.max(arr1))
+print("Min:", np.min(arr1))
+
+# 5. Indexing and slicing
+print("First element:", arr1[0])
+print("Slice:", arr1[1:4])
+
+# 6. Reshaping arrays
+reshaped = arr1.reshape(5, 1)
+print("Reshaped array:\n", reshaped)
+
+# 7. Random numbers
+random_arr = np.random.randint(1, 100, 5)
+print("Random numbers:", random_arr)
+
+# 8. Matrix multiplication
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+C = np.dot(A, B)
+print("Matrix multiplication:\n", C)
+
+
+......................................................................
+......................................................................
+WEEK 4: PANDAS FOR MACHINE LEARNING (COMPLETE GUIDE)
+
+Pandas is the data-handling backbone of Machine Learning. 
+Before training any ML model, you must first:
+
+1. Load data
+2. Clean data
+3. Filter data
+4. Analyze data
+All of this is done using Pandas.
+
+✅ EXAMPLE
+import pandas as pd
+
+# 1. Creating a dataset
+data = {
+    "Name": ["John", "Mary", "David", "Sarah", "Paul"],
+    "Age": [18, 20, 19, 21, 22],
+    "Score": [65, 75, 80, 72, 90]
+}
+
+df = pd.DataFrame(data)
+
+# 2. Display dataset
+print("Full Dataset:")
+print(df)
+
+# 3. Basic information
+print("\nDataset Info:")
+print(df.info())
+
+print("\nStatistical Summary:")
+print(df.describe())
+
+# 4. Selecting columns
+print("\nNames:")
+print(df["Name"])
+
+# 5. Selecting rows
+print("\nFirst 3 Rows:")
+print(df.head(3))
+
+# 6. Filtering data
+passed_students = df[df["Score"] >= 70]
+print("\nPassed Students:")
+print(passed_students)
+
+# 7. Adding a new column
+df["Status"] = ["Fail", "Pass", "Pass", "Pass", "Pass"]
+print("\nDataset After Adding Status Column:")
+print(df)
+
+# 8. Sorting data
+sorted_df = df.sort_values(by="Score", ascending=False)
+print("\nSorted by Score (Descending):")
+print(sorted_df)
+
+# 9. Saving to CSV
+df.to_csv("students.csv", index=False)
+
+
+
+..........................................................
+.........................................................
+
+WEEK 5: DATA CLEANING & PREPROCESSING FOR MACHINE LEARNING
+
+Before training any ML model, your data must be:
+Clean
+Numeric
+Scaled
+
+Properly split into training and testing sets.
+This step decides 70–80% of your model’s success.
+
+✅ EXAMPLE
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.model_selection import train_test_split
+
+# 1. Create raw dataset with missing values
+data = {
+    "Age": [18, 20, np.nan, 22, 21],
+    "Gender": ["Male", "Female", "Female", "Male", "Male"],
+    "Score": [65, 75, 80, np.nan, 90],
+    "Passed": ["No", "Yes", "Yes", "Yes", "Yes"]
+}
+
+df = pd.DataFrame(data)
+print("Original Dataset:")
+print(df)
+
+# 2. Handle missing values
+df["Age"].fillna(df["Age"].mean(), inplace=True)
+df["Score"].fillna(df["Score"].mean(), inplace=True)
+
+print("\nAfter Handling Missing Values:")
+print(df)
+
+# 3. Encode categorical data
+encoder = LabelEncoder()
+df["Gender"] = encoder.fit_transform(df["Gender"])
+df["Passed"] = encoder.fit_transform(df["Passed"])
+
+print("\nAfter Encoding:")
+print(df)
+
+# 4. Feature scaling
+scaler = StandardScaler()
+df[["Age", "Score"]] = scaler.fit_transform(df[["Age", "Score"]])
+
+print("\nAfter Feature Scaling:")
+print(df)
+
+# 5. Split data into input (X) and output (y)
+X = df[["Age", "Gender", "Score"]]
+y = df["Passed"]
+
+# 6. Train-test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+print("\nTraining Data:")
+print(X_train)
+
+print("\nTesting Data:")
+print(X_test)
