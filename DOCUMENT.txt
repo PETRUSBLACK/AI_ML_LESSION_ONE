@@ -311,6 +311,21 @@ Scaled
 Properly split into training and testing sets.
 This step decides 70–80% of your model’s success.
 
+Data preprocessing is the process of:
+
+Cleaning raw data
+Removing errors
+Converting text to numbers
+Scaling values
+Splitting data for training and testing
+✅ ML models cannot learn properly from dirty or unprocessed data.
+
+✔ pandas → Data handling
+✔ numpy → Numerical operations
+✔ LabelEncoder → Convert text to numbers
+✔ StandardScaler → Normalize numbers
+✔ train_test_split → Split dataset
+
 ✅ EXAMPLE
 import pandas as pd
 import numpy as np
@@ -325,6 +340,12 @@ data = {
     "Passed": ["No", "Yes", "Yes", "Yes", "Yes"]
 }
 
+
+✔ np.nan represents missing values
+✔ Dataset contains:
+Numerical data (Age, Score)
+Categorical data (Gender, Passed)
+
 df = pd.DataFrame(data)
 print("Original Dataset:")
 print(df)
@@ -336,6 +357,12 @@ df["Score"].fillna(df["Score"].mean(), inplace=True)
 print("\nAfter Handling Missing Values:")
 print(df)
 
+The code above 
+✔ Replaces missing values with the average (mean)
+✔ This prevents:
+Model crashes
+Wrong predictions
+
 # 3. Encode categorical data
 encoder = LabelEncoder()
 df["Gender"] = encoder.fit_transform(df["Gender"])
@@ -344,12 +371,27 @@ df["Passed"] = encoder.fit_transform(df["Passed"])
 print("\nAfter Encoding:")
 print(df)
 
+| Before | After |
+| ------ | ----- |
+| Male   | 1     |
+| Female | 0     |
+| Yes    | 1     |
+| No     | 0     |
+✅ ML models only understand numbers, not text
+
 # 4. Feature scaling
 scaler = StandardScaler()
 df[["Age", "Score"]] = scaler.fit_transform(df[["Age", "Score"]])
 
 print("\nAfter Feature Scaling:")
 print(df)
+
+The code above
+✔ Converts all numbers to the same scale
+✔ Prevents:
+
+Big values from dominating small ones
+✔ Makes training faster and more accurate
 
 # 5. Split data into input (X) and output (y)
 X = df[["Age", "Gender", "Score"]]
@@ -362,6 +404,63 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 print("\nTraining Data:")
 print(X_train)
-
+ 
 print("\nTesting Data:")
 print(X_test)
+
+
+.......................................................................
+.......................................................................
+
+
+WEEK 6: SUPERVISED MACHINE LEARNING (LINEAR & LOGISTIC REGRESSION)
+
+Supervised Learning is the most common type of ML, where we teach the model 
+using input-output pairs.
+Input (X): Features (data we know)
+Output (y): Labels (what we want to predict)
+
+We will learn Linear Regression (continuous prediction) and Logistic 
+Regression (classification).
+
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, accuracy_score
+
+# 1. Linear Regression Example (Predict house price)
+X = np.array([[50], [60], [70], [80], [90]])  # square meters
+y = np.array([150, 180, 210, 240, 270])      # price in $1000
+
+model_lr = LinearRegression()
+model_lr.fit(X, y)
+
+predicted_price = model_lr.predict([[75]])
+print("Predicted price for 75 sq.m:", predicted_price[0])
+
+# 2. Logistic Regression Example (Predict pass/fail)
+data = {
+    "Hours_Studied": [1, 2, 3, 4, 5, 6],
+    "Passed": [0, 0, 0, 1, 1, 1]  # 0=Fail, 1=Pass
+}
+
+df = pd.DataFrame(data)
+X_log = df[["Hours_Studied"]]
+y_log = df["Passed"]
+
+model_log = LogisticRegression()
+model_log.fit(X_log, y_log)
+
+# Predict if student passes after studying 3.5 hours
+predicted_result = model_log.predict([[3.5]])
+print("Predicted result for 3.5 hours:", "Pass" if predicted_result[0] == 1 else "Fail")
+
+# 3. Evaluate models
+y_pred_lr = model_lr.predict(X)
+mse = mean_squared_error(y, y_pred_lr)
+print("Linear Regression Mean Squared Error:", mse)
+
+y_pred_log = model_log.predict(X_log)
+accuracy = accuracy_score(y_log, y_pred_log)
+print("Logistic Regression Accuracy:", accuracy)
